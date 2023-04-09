@@ -30,11 +30,11 @@ pipeline {
             sh 'docker push willcsilva/node-js:latest'
             }
         }
-        stage('Removendo a imagem localmente'){
-            steps{
-              sh 'docker stack rm willcsilva/node-js:latest'
-            }
-        }
+        //stage('Removendo a imagem localmente'){
+        //    steps{
+        //      sh 'docker stack rm willcsilva/node-js:latest'
+        //    }
+        //}
         stage('Deploy no Cluster Swarm'){
             steps{
                 sshagent(['Docker_Swarm_Manager-SSH-Agent']) {
