@@ -27,7 +27,7 @@ pipeline {
                 sh 'docker login -u willcsilva -p ${Docker_Hub_Pswd}'
             }
             sh 'docker push willcsilva/node-js:latest'
-            }
+        }
         stage('Deploy no Cluster Swarm'){
             steps{
                 sshagent(['Docker_Swarm_Manager-SSH-Agent']) {
