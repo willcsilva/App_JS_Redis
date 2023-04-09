@@ -26,7 +26,7 @@ pipeline {
             steps{
                 sshagent(['Docker_Swarm_Manager-SSH-Agent']) {
                  sh 'scp -o StrictHostKeyChecking=no docker-compose.yml vagrant@192.168.100.26:'
-                 sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.100.26 docker stack deploy --compose-file docker-compose.yml redis-server'
+                 sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.100.26 docker stack deploy --compose-file docker-compose.yml devops/app'
                 }
             }
         }
