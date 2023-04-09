@@ -18,7 +18,7 @@ pipeline {
         //}
         stage('Build da Imagem docker'){
             steps{
-                sh 'docker build -t willcsilva/node-js:latest .'
+                sh 'docker build -t node-js .'
             
             }
         }
@@ -26,7 +26,7 @@ pipeline {
             steps{
                 sshagent(['Docker_Swarm_Manager-SSH-Agent']) {
                  sh 'scp -o StrictHostKeyChecking=no docker-compose.yml vagrant@192.168.100.26:'
-                 sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.100.26 docker stack deploy --compose-file docker-compose.yml willcsilva/node-js:latest'
+                 sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.100.26 docker stack deploy --compose-file docker-compose.yml node-js'
                 }
             }
         }
@@ -35,6 +35,7 @@ pipeline {
             withCredentials([string(credentialsId: 'Docker_Hub_Pswd', variable: 'Docker_Hub_Pswd')]) {
               sh 'docker login -u willcsilva -p ${Docker_Hub_Pswd}'
             }
+            sh 'docker tag node-js:willcsilva/node-js:latest'
             sh 'docker push willcsilva/node-js:latest'
             }
         }
