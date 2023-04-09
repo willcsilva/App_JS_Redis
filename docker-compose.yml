@@ -4,5 +4,6 @@ services:
     image: 'redis'
   node-app:
     build: .
+    dockerfile: Dockerfile
     ports:
         - "8081:8081"
