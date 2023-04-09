@@ -22,9 +22,12 @@ pipeline {
             
             }
         }
-        stage('Subindo o Container Redis - App'){
+        stage('Deploy no Cluster Swarm'){
             steps{
-                sh 'docker-compose up --build -d'
+                sshagent(['Docker_Swarm_Manager-SSH-Agent']) {
+                 sh 'scp -o StrictHostKeyChecking=no docker-compose.yml vagrant@192.168.100.26:'
+                 sh 'sh -o StrictHostKeyChecking=no vagrant@192.168.100.26 docker stack deploy --prune --compose-file docker-compose.yml devops/app'
+                }
             }
         }
         stage('Sleep para subir os containers'){
