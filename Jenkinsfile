@@ -23,10 +23,12 @@ pipeline {
             }
         }
         stage('DockerHub_Push'){
+            steps{
             withCredentials([string(credentialsId: 'Docker_Hub_Pswd', variable: 'Docker_Hub_Pswd')]) {
               sh 'docker login -u willcsilva -p ${Docker_Hub_Pswd}'
             }
             sh 'docker push willcsilva/node-js:latest'
+            }
         }
         stage('Deploy no Cluster Swarm'){
             steps{
