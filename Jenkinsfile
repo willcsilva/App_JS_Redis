@@ -18,7 +18,7 @@ pipeline {
         //}
         stage('Build da Imagem docker'){
             steps{
-                sh 'docker build -t devops/app .'
+                sh 'docker build -t willcsilva/node-js .'
             
             }
         }
