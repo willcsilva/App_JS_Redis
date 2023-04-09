@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Removendo a imagem localmente'){
             steps{
-              sh 'docker rmi -f willcsilva/node-js:latest'
+              sh 'docker stack rm willcsilva/node-js:latest'
             }
         }
         stage('Deploy no Cluster Swarm'){
