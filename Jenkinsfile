@@ -27,7 +27,7 @@ pipeline {
             withCredentials([string(credentialsId: 'Docker_Hub_Pswd', variable: 'Docker_Hub_Pswd')]) {
               sh 'docker login -u willcsilva -p ${Docker_Hub_Pswd}'
             }
-            sh 'docker tag node-js:willcsilva/node-js:latest'
+            sh 'docker tag node-js:latest willcsilva/node-js:latest'
             sh 'docker push willcsilva/node-js:latest'
             }
         }
