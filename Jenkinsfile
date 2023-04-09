@@ -31,12 +31,12 @@ pipeline {
             sh 'docker push willcsilva/node-js:latest'
             }
         }
-        stage('Removendo a imagem localmente'){
-            steps{
-              sh 'docker rmi -f willcsilva/node-js'
-              sh 'docker rmi node-js'
-            }
-        }
+        //stage('Removendo a imagem localmente'){
+        //    steps{
+        //      sh 'docker rmi -f willcsilva/node-js'
+        //      sh 'docker rmi node-js'
+        //    }
+        //}
         stage('Sleep para subir os containers'){
             steps{
                 sh 'sleep 10'
