@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Removendo a imagem localmente'){
             steps{
-              sh 'docker rm willcsilva/node-js'
+              sh 'docker rm node-js'
             }
         }
         stage('Sleep para subir os containers'){
